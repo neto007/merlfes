@@ -1,7 +1,7 @@
 :root {
     /* Dracula Theme Colors */
-    --background: #282a36;
-    --current-line: #44475a;
+    --background: #191a21; /* Darker background */
+    --current-line: #282a36; /* Darker current line */
     --foreground: #f8f8f2;
     --comment: #6272a4;
     --cyan: #8be9fd;
@@ -179,7 +179,7 @@ nav a:hover {
 /* Features Section */
 .features {
     padding: 80px 0;
-    background-color: #21222c; /* Slightly darker than bg */
+    background-color: #121318; /* Even darker for contrast */
 }
 
 .features h2 {
