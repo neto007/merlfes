@@ -1,0 +1,300 @@
+:root {
+    /* Dracula Theme Colors */
+    --background: #282a36;
+    --current-line: #44475a;
+    --foreground: #f8f8f2;
+    --comment: #6272a4;
+    --cyan: #8be9fd;
+    --green: #50fa7b;
+    --orange: #ffb86c;
+    --pink: #ff79c6;
+    --purple: #bd93f9;
+    --red: #ff5555;
+    --yellow: #f1fa8c;
+
+    /* Duolingo-ish Style Config */
+    --border-radius: 16px;
+    --btn-border-width: 0px 0px 4px 0px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: 'Nunito', sans-serif; /* Playful font */
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header */
+header {
+    background-color: var(--current-line);
+    padding: 20px 0;
+    border-bottom: 2px solid var(--comment);
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--purple);
+    letter-spacing: 1px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+nav a {
+    color: var(--foreground);
+    text-decoration: none;
+    font-weight: 700;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: var(--pink);
+}
+
+/* Buttons (Duolingo Style) */
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    transition: transform 0.1s;
+    border: solid transparent;
+    border-width: var(--btn-border-width);
+    cursor: pointer;
+}
+
+.btn:active {
+    transform: translateY(4px);
+    border-bottom-width: 0;
+    margin-bottom: 4px;
+}
+
+.btn-small {
+    background-color: var(--cyan);
+    color: var(--background);
+    border-color: #4da2b7; /* Darker cyan for 3D effect */
+}
+
+.btn-small:hover {
+    filter: brightness(1.1);
+}
+
+.btn-large {
+    background-color: var(--green);
+    color: var(--background);
+    border-color: #2e8b46; /* Darker green */
+    font-size: 1.2rem;
+    padding: 16px 32px;
+}
+
+.btn-large:hover {
+    filter: brightness(1.1);
+}
+
+/* Hero Section */
+.hero {
+    padding: 80px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center; /* Fallback */
+}
+
+.hero .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.hero-content {
+    flex: 1;
+    text-align: left;
+    min-width: 300px;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+    color: var(--pink);
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    color: var(--foreground);
+    max-width: 500px;
+}
+
+.hero-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.code-block {
+    background-color: var(--current-line);
+    padding: 40px;
+    border-radius: var(--border-radius);
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    box-shadow: 0 10px 0 rgba(0,0,0,0.2);
+    transform: rotate(-5deg);
+    border: 4px solid var(--purple);
+}
+
+.code-block .keyword { color: var(--pink); }
+.code-block .function { color: var(--green); }
+.code-block .string { color: var(--yellow); }
+
+/* Features Section */
+.features {
+    padding: 80px 0;
+    background-color: #21222c; /* Slightly darker than bg */
+}
+
+.features h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: var(--purple);
+    margin-bottom: 50px;
+    font-weight: 800;
+}
+
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.card {
+    background-color: var(--current-line);
+    padding: 30px;
+    border-radius: var(--border-radius);
+    border: 2px solid var(--comment);
+    text-align: center;
+    transition: transform 0.2s;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    border-color: var(--pink);
+}
+
+.card .icon {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.card h3 {
+    color: var(--cyan);
+    margin-bottom: 15px;
+    font-weight: 800;
+}
+
+/* How It Works */
+.how-it-works {
+    padding: 80px 0;
+}
+
+.how-it-works h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: var(--yellow);
+    margin-bottom: 50px;
+    font-weight: 800;
+}
+
+.steps {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.step {
+    flex: 1;
+    min-width: 250px;
+    text-align: center;
+    background-color: var(--current-line);
+    padding: 30px;
+    border-radius: var(--border-radius);
+    border: 2px dashed var(--orange);
+    position: relative;
+}
+
+.step-number {
+    width: 40px;
+    height: 40px;
+    background-color: var(--orange);
+    color: var(--background);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    margin: 0 auto 20px auto;
+}
+
+.step h3 {
+    color: var(--foreground);
+    margin-bottom: 10px;
+}
+
+/* Footer */
+footer {
+    background-color: var(--current-line);
+    padding: 40px 0;
+    text-align: center;
+    color: var(--comment);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero-content {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+    .hero .container {
+        flex-direction: column;
+    }
+
+    .hero p {
+        margin: 0 auto 30px auto;
+    }
+}
