@@ -1,7 +1,7 @@
 :root {
     /* Dracula Theme Colors */
-    --background: #191a21; /* Darker background */
-    --current-line: #282a36; /* Darker current line */
+    --background: #15161c; /* Very Dark background */
+    --current-line: #2a2c3b;
     --foreground: #f8f8f2;
     --comment: #6272a4;
     --cyan: #8be9fd;
@@ -12,9 +12,14 @@
     --red: #ff5555;
     --yellow: #f1fa8c;
 
-    /* Duolingo-ish Style Config */
+    /* Neobrutalism Palette */
+    --border-color: #000000;
+    --shadow-color: #000000;
+
+    /* Duolingo/Neobrutalism Config */
     --border-radius: 16px;
-    --btn-border-width: 0px 0px 4px 0px;
+    --border-width: 3px;
+    --shadow-offset: 6px;
 }
 
 * {
@@ -26,7 +31,7 @@
 body {
     background-color: var(--background);
     color: var(--foreground);
-    font-family: 'Nunito', sans-serif; /* Playful font */
+    font-family: 'Nunito', sans-serif;
     line-height: 1.6;
 }
 
@@ -38,9 +43,9 @@ body {
 
 /* Header */
 header {
-    background-color: var(--current-line);
+    background-color: var(--background);
     padding: 20px 0;
-    border-bottom: 2px solid var(--comment);
+    border-bottom: var(--border-width) solid var(--border-color);
 }
 
 .header-container {
@@ -50,10 +55,12 @@ header {
 }
 
 .logo {
-    font-size: 1.5rem;
-    font-weight: 800;
+    font-size: 1.8rem;
+    font-weight: 900;
     color: var(--purple);
     letter-spacing: 1px;
+    text-shadow: 3px 3px 0px var(--shadow-color);
+    -webkit-text-stroke: 1px var(--border-color);
 }
 
 nav ul {
@@ -66,64 +73,69 @@ nav ul {
 nav a {
     color: var(--foreground);
     text-decoration: none;
-    font-weight: 700;
-    transition: color 0.3s;
+    font-weight: 800;
+    font-size: 1.1rem;
+    transition: color 0.2s;
 }
 
 nav a:hover {
     color: var(--pink);
+    text-decoration: underline;
+    text-decoration-thickness: 3px;
 }
 
-/* Buttons (Duolingo Style) */
+/* Buttons (Neobrutalist) */
 .btn {
     display: inline-block;
-    padding: 12px 24px;
+    padding: 14px 28px;
     border-radius: var(--border-radius);
     text-decoration: none;
     font-weight: 800;
     text-transform: uppercase;
-    letter-spacing: 0.8px;
-    transition: transform 0.1s;
-    border: solid transparent;
-    border-width: var(--btn-border-width);
+    letter-spacing: 1px;
+    transition: all 0.1s;
+    border: var(--border-width) solid var(--border-color);
+    position: relative;
     cursor: pointer;
 }
 
+/* Base button shadow state */
+.btn {
+    box-shadow: var(--shadow-offset) var(--shadow-offset) 0px var(--shadow-color);
+    transform: translate(-2px, -2px);
+}
+
 .btn:active {
-    transform: translateY(4px);
-    border-bottom-width: 0;
-    margin-bottom: 4px;
+    box-shadow: 0px 0px 0px var(--shadow-color);
+    transform: translate(calc(var(--shadow-offset) - 2px), calc(var(--shadow-offset) - 2px));
 }
 
 .btn-small {
     background-color: var(--cyan);
-    color: var(--background);
-    border-color: #4da2b7; /* Darker cyan for 3D effect */
+    color: var(--border-color);
 }
 
 .btn-small:hover {
-    filter: brightness(1.1);
+    background-color: #7adff2;
 }
 
 .btn-large {
     background-color: var(--green);
-    color: var(--background);
-    border-color: #2e8b46; /* Darker green */
-    font-size: 1.2rem;
-    padding: 16px 32px;
+    color: var(--border-color);
+    font-size: 1.3rem;
+    padding: 18px 36px;
 }
 
 .btn-large:hover {
-    filter: brightness(1.1);
+    background-color: #45ea70;
 }
 
 /* Hero Section */
 .hero {
-    padding: 80px 0;
+    padding: 100px 0;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    text-align: center; /* Fallback */
 }
 
 .hero .container {
@@ -132,26 +144,30 @@ nav a:hover {
     justify-content: space-between;
     width: 100%;
     flex-wrap: wrap;
+    gap: 40px;
 }
 
 .hero-content {
     flex: 1;
-    text-align: left;
     min-width: 300px;
 }
 
 .hero h1 {
-    font-size: 3.5rem;
-    font-weight: 800;
-    margin-bottom: 20px;
+    font-size: 4rem;
+    font-weight: 900;
+    margin-bottom: 24px;
     color: var(--pink);
+    text-shadow: 4px 4px 0px var(--shadow-color);
+    -webkit-text-stroke: 1.5px var(--border-color);
+    line-height: 1.1;
 }
 
 .hero p {
-    font-size: 1.2rem;
-    margin-bottom: 30px;
+    font-size: 1.4rem;
+    margin-bottom: 40px;
     color: var(--foreground);
-    max-width: 500px;
+    max-width: 550px;
+    font-weight: 600;
 }
 
 .hero-image {
@@ -167,9 +183,9 @@ nav a:hover {
     border-radius: var(--border-radius);
     font-family: 'Courier New', Courier, monospace;
     font-weight: bold;
-    box-shadow: 0 10px 0 rgba(0,0,0,0.2);
-    transform: rotate(-5deg);
-    border: 4px solid var(--purple);
+    transform: rotate(-3deg);
+    border: var(--border-width) solid var(--border-color);
+    box-shadow: var(--shadow-offset) var(--shadow-offset) 0px var(--shadow-color);
 }
 
 .code-block .keyword { color: var(--pink); }
@@ -178,41 +194,45 @@ nav a:hover {
 
 /* Features Section */
 .features {
-    padding: 80px 0;
-    background-color: #121318; /* Even darker for contrast */
+    padding: 100px 0;
+    background-color: #0b0c10; /* Even darker distinct section */
+    border-top: var(--border-width) solid var(--border-color);
+    border-bottom: var(--border-width) solid var(--border-color);
 }
 
 .features h2 {
     text-align: center;
-    font-size: 2.5rem;
+    font-size: 3rem;
     color: var(--purple);
-    margin-bottom: 50px;
-    font-weight: 800;
+    margin-bottom: 60px;
+    font-weight: 900;
+    text-shadow: 3px 3px 0px var(--shadow-color);
+    -webkit-text-stroke: 1px var(--border-color);
 }
 
 .cards-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
 }
 
 .card {
     background-color: var(--current-line);
-    padding: 30px;
+    padding: 40px 30px;
     border-radius: var(--border-radius);
-    border: 2px solid var(--comment);
+    border: var(--border-width) solid var(--border-color);
     text-align: center;
     transition: transform 0.2s;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    box-shadow: var(--shadow-offset) var(--shadow-offset) 0px var(--shadow-color);
 }
 
 .card:hover {
-    transform: translateY(-5px);
-    border-color: var(--pink);
+    transform: translate(-4px, -4px);
+    box-shadow: calc(var(--shadow-offset) + 4px) calc(var(--shadow-offset) + 4px) 0px var(--shadow-color);
 }
 
 .card .icon {
-    font-size: 3rem;
+    font-size: 4rem;
     margin-bottom: 20px;
 }
 
@@ -220,19 +240,22 @@ nav a:hover {
     color: var(--cyan);
     margin-bottom: 15px;
     font-weight: 800;
+    font-size: 1.5rem;
 }
 
 /* How It Works */
 .how-it-works {
-    padding: 80px 0;
+    padding: 100px 0;
 }
 
 .how-it-works h2 {
     text-align: center;
-    font-size: 2.5rem;
+    font-size: 3rem;
     color: var(--yellow);
-    margin-bottom: 50px;
-    font-weight: 800;
+    margin-bottom: 60px;
+    font-weight: 900;
+    text-shadow: 3px 3px 0px var(--shadow-color);
+    -webkit-text-stroke: 1px var(--border-color);
 }
 
 .steps {
@@ -247,47 +270,54 @@ nav a:hover {
     min-width: 250px;
     text-align: center;
     background-color: var(--current-line);
-    padding: 30px;
+    padding: 40px 30px;
     border-radius: var(--border-radius);
-    border: 2px dashed var(--orange);
+    border: var(--border-width) solid var(--border-color);
+    box-shadow: var(--shadow-offset) var(--shadow-offset) 0px var(--shadow-color);
     position: relative;
 }
 
 .step-number {
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
     background-color: var(--orange);
-    color: var(--background);
+    color: var(--border-color);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-weight: 800;
+    font-weight: 900;
+    font-size: 1.5rem;
     margin: 0 auto 20px auto;
+    border: var(--border-width) solid var(--border-color);
+    box-shadow: 2px 2px 0px var(--shadow-color);
 }
 
 .step h3 {
     color: var(--foreground);
-    margin-bottom: 10px;
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+    font-weight: 800;
 }
 
 /* Footer */
 footer {
-    background-color: var(--current-line);
-    padding: 40px 0;
+    background-color: var(--background);
+    padding: 60px 0;
     text-align: center;
     color: var(--comment);
+    border-top: var(--border-width) solid var(--border-color);
+    font-weight: 700;
 }
 
 /* Responsive Adjustments */
 @media (max-width: 768px) {
     .hero h1 {
-        font-size: 2.5rem;
+        font-size: 2.8rem;
     }
 
     .hero-content {
         text-align: center;
-        margin-bottom: 40px;
     }
 
     .hero .container {
@@ -296,5 +326,10 @@ footer {
 
     .hero p {
         margin: 0 auto 30px auto;
+    }
+
+    .btn {
+        width: 100%;
+        text-align: center;
     }
 }
