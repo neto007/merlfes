@@ -1,0 +1,335 @@
+:root {
+    /* Dracula Classic Palette - https://draculatheme.com/spec */
+    --background: #282A36;
+    --current-line: #44475A;
+    --selection: #44475A;
+    --foreground: #F8F8F2;
+    --comment: #6272A4;
+    --cyan: #8BE9FD;
+    --green: #50FA7B;
+    --orange: #FFB86C;
+    --pink: #FF79C6;
+    --purple: #BD93F9;
+    --red: #FF5555;
+    --yellow: #F1FA8C;
+
+    /* UI Palette */
+    --background-darker: #191A21;
+    --background-dark: #21222C;
+    --background-light: #343746;
+    --background-lighter: #424450;
+
+    /* Config */
+    --border-radius: 12px; /* Slightly softer than 16px */
+    --font-family: 'Nunito', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-family);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header */
+header {
+    background-color: var(--background-darker);
+    padding: 20px 0;
+    border-bottom: 1px solid var(--current-line);
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--purple);
+    letter-spacing: 0.5px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+nav a {
+    color: var(--foreground);
+    text-decoration: none;
+    font-weight: 700;
+    transition: color 0.2s;
+}
+
+nav a:hover {
+    color: var(--cyan);
+}
+
+/* Buttons (Refined Duolingo Style) */
+/* The spec says: "Use functional colors".
+   Duolingo buttons have a 3D effect. We replicate this with a border-bottom
+   that is a darker shade of the button color, NOT black. */
+
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: transform 0.1s, box-shadow 0.1s;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    top: 0;
+}
+
+/* Helper to generate darker shade for border-bottom automatically?
+   No, CSS variables don't do math easily without calc-mix or hsl.
+   We will hardcode the "shadow" colors based on the spec or just use opacity. */
+
+.btn-small {
+    background-color: var(--cyan);
+    color: var(--background-darker); /* Dark text on bright button */
+    box-shadow: 0 4px 0 #4da2b7; /* Manually dimmed cyan */
+}
+
+.btn-small:hover {
+    filter: brightness(1.1);
+}
+
+.btn-small:active {
+    box-shadow: 0 0 0 #4da2b7;
+    transform: translateY(4px);
+}
+
+.btn-large {
+    background-color: var(--green);
+    color: var(--background-darker);
+    font-size: 1.2rem;
+    padding: 16px 32px;
+    box-shadow: 0 5px 0 #2e8b46; /* Dimmed green */
+}
+
+.btn-large:hover {
+    filter: brightness(1.1);
+}
+
+.btn-large:active {
+    box-shadow: 0 0 0 #2e8b46;
+    transform: translateY(5px);
+}
+
+/* Hero Section */
+.hero {
+    padding: 80px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.hero .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.hero-content {
+    flex: 1;
+    min-width: 300px;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 24px;
+    color: var(--pink);
+    line-height: 1.2;
+}
+
+.hero p {
+    font-size: 1.25rem;
+    margin-bottom: 32px;
+    color: var(--foreground);
+    max-width: 500px;
+    opacity: 0.9;
+}
+
+.hero-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Code Block - Spec Compliant Style */
+.code-block {
+    background-color: var(--background-darker);
+    padding: 30px;
+    border-radius: var(--border-radius);
+    font-family: 'Fira Code', 'Courier New', monospace; /* Monospace for code */
+    font-weight: 500;
+    border: 1px solid var(--current-line);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3); /* Soft shadow, strictly visual hierarchy */
+}
+
+.code-block .keyword { color: var(--pink); }
+.code-block .function { color: var(--green); }
+.code-block .string { color: var(--yellow); }
+
+/* Features Section */
+.features {
+    padding: 100px 0;
+    background-color: var(--background-dark);
+}
+
+.features h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: var(--purple);
+    margin-bottom: 60px;
+    font-weight: 800;
+}
+
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.card {
+    background-color: var(--background-light); /* Floating interactive element color */
+    padding: 40px 30px;
+    border-radius: var(--border-radius);
+    text-align: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+    border: 1px solid transparent; /* Prepare for hover */
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    border-color: var(--purple); /* Interactive border: Functional color */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.card .icon {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.card h3 {
+    color: var(--cyan);
+    margin-bottom: 15px;
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+
+.card p {
+    color: var(--foreground);
+    opacity: 0.8;
+}
+
+/* How It Works */
+.how-it-works {
+    padding: 100px 0;
+}
+
+.how-it-works h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: var(--yellow);
+    margin-bottom: 60px;
+    font-weight: 800;
+}
+
+.steps {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.step {
+    flex: 1;
+    min-width: 250px;
+    text-align: center;
+    background-color: var(--background-darker);
+    padding: 40px 30px;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--current-line); /* Subtle border */
+    position: relative;
+}
+
+.step-number {
+    width: 48px;
+    height: 48px;
+    background-color: var(--orange);
+    color: var(--background-darker);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 1.25rem;
+    margin: 0 auto 24px auto;
+}
+
+.step h3 {
+    color: var(--foreground);
+    margin-bottom: 15px;
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+/* Footer */
+footer {
+    background-color: var(--background-darker);
+    padding: 40px 0;
+    text-align: center;
+    color: var(--comment);
+    border-top: 1px solid var(--current-line);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero-content {
+        text-align: center;
+    }
+
+    .hero .container {
+        flex-direction: column;
+    }
+
+    .hero p {
+        margin: 0 auto 30px auto;
+    }
+
+    .btn {
+        width: 100%;
+        text-align: center;
+    }
+}
